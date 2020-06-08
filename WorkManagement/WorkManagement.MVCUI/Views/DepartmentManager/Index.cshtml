@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Department List</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create a New Department", "Create",null,new {@class="btn btn-primary" })
 </p>
 <table class="table">
     <tr>
@@ -28,12 +28,12 @@
         @Html.DisplayFor(modelItem => item.DepartmentName)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.CreatedAt)
+        @item.CreatedAt.ToString("dd.MM.yyyy")
     </td>
     <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.DepartmentId }) |
-        @Html.ActionLink("Details", "Details", new { id = item.DepartmentId }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.DepartmentId })
+        @Html.ActionLink("Edit", "Edit", new { id = item.DepartmentId },new {@class="btn btn-warning" }) |
+        @*@Html.ActionLink("Details", "Details", new { id = item.DepartmentId }) |*@
+        @Html.ActionLink("Delete", "Delete", new { id = item.DepartmentId },new {@class="btn btn-danger" })
     </td>
 </tr>
 }
