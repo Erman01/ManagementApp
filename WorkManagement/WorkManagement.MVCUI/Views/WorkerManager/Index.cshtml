@@ -44,6 +44,8 @@
 <tr>
     <td>
         <img class="img-rounded" style="height:100px" src="~/Content/WorkerProfileImages/@item.WorkerImageUrl" />
+    
+        @Html.ActionLink("Go to Gallery", "WorkerGallery", new { id = item.WorkerId }, new { @class = "btn btn-default" })
     </td>
     <td>
         @item.CreatedAt.ToString("dd.MM.yyyy")
@@ -70,7 +72,7 @@
 
 
     <td>
-        @Html.ActionLink("Details", "Details", new { id = item.WorkerId }, new { @class = "btn btn-primary" }) |
+        @Html.ActionLink("Details", "Details", new { id = item.WorkerId }, new { @class = "btn btn-default" }) |
         @Html.ActionLink("Edit", "Edit", new { id = item.WorkerId }, new { @class = "btn btn-warning" }) |
         @Html.ActionLink("Delete", "Delete", new { id = item.WorkerId }, new { @class = "btn btn-danger" })
     </td>

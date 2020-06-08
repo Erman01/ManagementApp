@@ -14,6 +14,7 @@ namespace WorkManagement.Core.Models
         {
             WorkerImages = new List<WorkerImage>();
         }
+        
         [Key]
         public int WorkerImageGalleryId { get; set; }
         public string GalleryName { get; set; }
@@ -23,6 +24,7 @@ namespace WorkManagement.Core.Models
         [ForeignKey("WorkerId")]
         public virtual Worker Worker { get; set; }
         public virtual ICollection<WorkerImage> WorkerImages { get; set; }
+
 
     }
 }

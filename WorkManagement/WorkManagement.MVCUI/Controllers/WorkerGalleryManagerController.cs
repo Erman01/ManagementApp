@@ -14,10 +14,12 @@ namespace WorkManagement.MVCUI.Controllers
     {
         IRepository<WorkerGallery> _workerGalleryRepository;
         IRepository<Worker> _workerRepository;
+      
         public WorkerGalleryManagerController(IRepository<WorkerGallery> workerImageGalleryRepository, IRepository<Worker> workerRepository)
         {
             _workerGalleryRepository = workerImageGalleryRepository;
             _workerRepository = workerRepository;
+          
         }
         public ActionResult Index()
         {
@@ -25,6 +27,7 @@ namespace WorkManagement.MVCUI.Controllers
 
             return View(listOfGallery);
         }
+       
         public ActionResult Create()
         {
             WorkerGalleryViewModel viewModel = new WorkerGalleryViewModel()
@@ -92,6 +95,7 @@ namespace WorkManagement.MVCUI.Controllers
                 }
                 galleryToEdit.GalleryName = gallery.GalleryName;
                 galleryToEdit.WorkerId = gallery.WorkerId;
+                
                 _workerGalleryRepository.Commit();
 
                 return RedirectToAction("Index");

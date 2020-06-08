@@ -11,15 +11,31 @@ namespace WorkManagement.MVCUI.Controllers
     public class DepartmentManagerController : Controller
     {
         IRepository<Department> _departmentRepository;
-        public DepartmentManagerController(IRepository<Department> departmentRepository)
+        IRepository<Worker> _workerRepository;
+        public DepartmentManagerController(IRepository<Department> departmentRepository, IRepository<Worker> workerRepository)
         {
             _departmentRepository = departmentRepository;
+            _workerRepository = workerRepository;
         }
         public ActionResult Index()
         {
             List<Department> departments = _departmentRepository.Collection().ToList();
 
             return View(departments);
+        }
+        public ActionResult Details(int id)
+        {
+            Department department = _departmentRepository.Find(id);
+            if (department==null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                List<Worker> workerListByDepartment = _workerRepository.Collection().Where(x => x.DepartmentId == department.DepartmentId).ToList();
+                return View(workerListByDepartment);
+            }
+           
         }
         public ActionResult Create()
         {

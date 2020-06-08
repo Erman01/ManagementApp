@@ -14,10 +14,15 @@ namespace WorkManagement.MVCUI.Controllers
     {
         IRepository<Worker> _workerRepository;
         IRepository<Department> _departmentRepository;
-        public WorkerManagerController(IRepository<Worker> workerRepository, IRepository<Department> departmentRepository)
+        IRepository<WorkerGallery> _workerGalleryRepository;
+       
+        public WorkerManagerController(IRepository<Worker> workerRepository, IRepository<Department> departmentRepository,
+            IRepository<WorkerGallery> workerGalleryRepository)
         {
             _workerRepository = workerRepository;
             _departmentRepository = departmentRepository;
+            _workerGalleryRepository = workerGalleryRepository;
+           
         }
         // GET: WorkerManeger
         public ActionResult Index()
@@ -36,6 +41,20 @@ namespace WorkManagement.MVCUI.Controllers
             else
             {
                 return View(worker);
+            }
+        }
+      
+        public ActionResult WorkerGallery(int Id)
+        {
+            Worker worker = _workerRepository.Find(Id);
+            if (worker==null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                List<WorkerGallery> workerGalleries = _workerGalleryRepository.Collection().Where(x => x.WorkerId == worker.WorkerId).ToList();
+                return View(workerGalleries);
             }
         }
         public ActionResult Create()

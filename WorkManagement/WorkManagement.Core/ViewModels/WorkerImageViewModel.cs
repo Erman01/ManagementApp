@@ -9,7 +9,9 @@ namespace WorkManagement.Core.ViewModels
 {
     public class WorkerImageViewModel
     {
+
         public WorkerImage WorkerImage { get; set; }
         public IEnumerable<WorkerGallery> WorkerGalleries { get; set; }
+        public IEnumerable<Worker> Workers { get; set; }
     }
 }

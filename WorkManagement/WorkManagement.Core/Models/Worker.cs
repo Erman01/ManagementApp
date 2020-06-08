@@ -12,8 +12,9 @@ namespace WorkManagement.Core.Models
     {
         public Worker()
         {
-            WorkerImages = new List<WorkerImage>();
+           
             WorkerImageGalleries = new List<WorkerGallery>();
+            WorkerImages = new List<WorkerImage>();
         }
         [Key]
         public int WorkerId { get; set; }
@@ -31,8 +32,9 @@ namespace WorkManagement.Core.Models
         public int DepartmentId { get; set; }
         [ForeignKey("DepartmentId")]
         public virtual Department Department { get; set; }
-        public virtual ICollection<WorkerImage> WorkerImages { get; set; }
         public virtual ICollection<WorkerGallery> WorkerImageGalleries { get; set; }
+        public virtual ICollection<WorkerImage> WorkerImages { get; set; }
+
 
     }
 

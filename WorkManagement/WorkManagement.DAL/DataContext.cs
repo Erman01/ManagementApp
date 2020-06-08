@@ -15,7 +15,6 @@ namespace WorkManagement.DAL
 
         }
         public DbSet<Worker> Workers { get; set; }
-        public DbSet<WorkerImage> WorkerImages { get; set; }
         public DbSet<WorkerGallery> WorkerImageGalleries { get; set; }
         public DbSet<Department> Departments { get; set; }
     }

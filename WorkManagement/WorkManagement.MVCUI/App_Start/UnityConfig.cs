@@ -49,6 +49,7 @@ namespace WorkManagement.MVCUI
             container.RegisterType<IRepository<Department>, SQLRepository<Department>>();
             container.RegisterType<IRepository<WorkerImage>, SQLRepository<WorkerImage>>();
             container.RegisterType<IRepository<WorkerGallery>, SQLRepository<WorkerGallery>>();
+           
             
         }
     }

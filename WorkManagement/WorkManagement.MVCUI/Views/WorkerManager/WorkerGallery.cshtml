@@ -1,0 +1,35 @@
+﻿@model IEnumerable<WorkManagement.Core.Models.WorkerGallery>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+
+<h4>
+    @Html.ActionLink("Create a New Gallery", "Create","WorkerGalleryManager", null, new { @class = "btn btn-primary" })
+</h4>
+
+<div class="col-md-12">
+
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3" style="height:300px;margin:10px;padding:10px;border:solid thin whitesmoke">
+            <div class="col-md-12">
+                <img class="img-responsive" style="height:180px" src="~/Content/Galleries/@item.GalleryUrl" />
+            </div>
+            <div class="col-md-12">
+                <strong>@item.GalleryName</strong>
+            </div>
+            <div class="col-md-12">
+                @item.CreatedAt.ToString("dd.MM.yyyy")
+            </div>
+            <div class="col-md-12">
+                @Html.ActionLink("Visit Gallery", "GalleryImages", "WorkerGalleryManager",new {id=item.WorkerImageGalleryId },new {@class="btn btn-default" })
+            </div>
+           
+        </div>
+    }
+</div>
+@Html.ActionLink("Back to User List","Index",null,new {@class="btn btn-default" })
+<div class="col-md-12 clearfix"></div>
